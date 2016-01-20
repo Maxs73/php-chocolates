@@ -1,5 +1,20 @@
 <!DOCTYPE html>
+<?php
+
+//Path o URL del file
+$string=file_get_contents('data/prodotti.json', 'r');
+
+//Decodifichiamo il json e lo associamo ad un array (True)
+$json_o=json_decode($string,true);
+
+//Per ogni elemento possiamo effettuare una operazione
+//In questo caso la mostro a video
+
+?>
 <html>
+  <?php
+    $var1="Casa del cioccolato";
+    ?>
   <head>
     <title>MV chocosite</title>
     <meta charset="utf-8">
@@ -51,7 +66,7 @@
         <div class="row">
           <div class="col-md-4">
             <div class="panel panel-default">
-              <div class="panel-heading"><a href="/product1.html">Maison du chocolat</a></div>
+              <div class="panel-heading"><a href="/product1.html"><?php echo $var1; ?></a></div>
               <div class="panel-body">
                 <img src="https://c1.staticflickr.com/3/2369/2458986998_c81485c2db_z.jpg?zz=1" />
               </div>
@@ -59,7 +74,14 @@
           </div>
           <div class="col-md-4">
             <div class="panel panel-default">
-              <div class="panel-heading"><a href="/product1.html">Mink</a></div>
+              <div class="panel-heading"><a href="/product1.html">
+                <?php
+                foreach($json_o[checklist] as $p)
+                {
+                  echo 'Nome: '.$p[elemento][Nome];
+                }
+                ?>
+            </a></div>
               <div class="panel-body">
                 <img src="https://c1.staticflickr.com/5/4027/4429686185_0e5ac89112_z.jpg?zz=1">
               </div>
