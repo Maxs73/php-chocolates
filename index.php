@@ -1,8 +1,6 @@
 <?php
 include 'libs/libreria.php';
-
 $arrayProdotti = inizializzaListaProdotti();
-
 ?>
 <!DOCTYPE html>
 <html>
