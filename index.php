@@ -7,7 +7,7 @@ $arrayProdotti = inizializzaListaProdotti();
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MV chocosite</title>
+    <title>Digi Corp</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,10 +21,10 @@ $arrayProdotti = inizializzaListaProdotti();
       <div class="container-fluid">
         <div class="row banner-home">
           <div class="col-md-3">
-            <img src="https://c2.staticflickr.com/6/5105/5626762538_406270541c_b.jpg">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyA1L7UTneg8u4dNQfF3jLkvAeyZUfmt9MZPcCJ_iffdvRgxYc">
           </div>
           <div class="col-md-9">
-            <h1>Il cioccolato più buono? Lo trovi da noi!</h1>
+            <h1>Il software migliore? Lo trovi da noi!</h1>
           </div>
         </div>
         <div class="row">

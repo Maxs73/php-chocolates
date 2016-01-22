@@ -30,8 +30,8 @@
       </div>
       <div class="col-md-4">
         <address>
-          <strong>Choco company, Inc.</strong><br>
-          Viale delle bontà, 123<br>
+          <strong>Digi Corp S.r.l</strong><br>
+          Viale delle libertà 23<br>
           Pordenone, Italy<br>
           <abbr title="Phone">P:</abbr> (123) 456-7890
         </address>
