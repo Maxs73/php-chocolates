@@ -20,3 +20,15 @@ function estraiProdottoDaLista(array $listaProdotti, $codice) {
   return null;
 
 }
+
+function estraiProdottoCodiceDaLista(array $listaProdotti, $codice) {
+
+  foreach($listaProdotti as $chiave => $elemento) {
+    if ($elemento['codice'] == $codice) {
+      return $chiave;
+    }
+  }
+
+  return null;
+
+}
