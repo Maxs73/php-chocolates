@@ -3,7 +3,7 @@
 session_start();
 
 include 'libs/libreria.php';
-include 'libs/Utente.php';
+//include 'libs/Utente.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -27,7 +27,7 @@ include 'libs/Utente.php';
       <div class="row">
         <div class="col-md-6">
 
-          <form method="POST" action="RiepilogoDatiUtente.php">
+          <form method="POST" action="aggiungi_Utente.php">
             <div class="form-group">
               <label for="nome">Nome</label>
               <input type="text" class="form-control" name="nome" placeholder="nome">

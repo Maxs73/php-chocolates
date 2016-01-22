@@ -17,3 +17,4 @@ aggiungiProdottoCarrello($prodotto, 1);
 
 // rimando a pagina carrello
 header ('location: carrello.php');
+?>
