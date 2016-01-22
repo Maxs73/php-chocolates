@@ -21,6 +21,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/carrello.php">Carrello</a></li>
+        <li><a href="/DatiUtente.php">Profilo Utente</a></li>
         <li><a href="/contatti.html">Contatti</a></li>
       </ul>
     </div>
