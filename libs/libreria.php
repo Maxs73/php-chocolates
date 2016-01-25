@@ -11,14 +11,21 @@ function inizializzaListaProdotti() {
 
 function estraiProdottoDaLista(array $listaProdotti, $codice) {
 
+if (is_null($codice)) {
+  $prodotto=$listaProdotti;
+  return $prodotto;
+}
+else {
+
   foreach($listaProdotti as $prodotto) {
     if ($prodotto['codice'] == $codice) {
       return $prodotto;
     }
   }
 
-  return null;
+}
 
+  return null;
 }
 
 function estraiProdottoCodiceDaLista(array $listaProdotti, $codice) {

@@ -28,7 +28,7 @@ $arrayProdotti = inizializzaListaProdotti();
           </div>
         </div>
         <div class="row">
-          <?php foreach($arrayProdotti as $prodotto) { ?>
+          <?php foreach($arrayProdotti as $prodotto) {?>
           <div class="col-md-4">
             <div class="panel panel-default">
               <div class="panel-heading"><a href="/prodotto.php?codice=<?= $prodotto['codice'] ?>"><?= $prodotto['nome'] ?></a></div>
