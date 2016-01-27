@@ -27,7 +27,7 @@ function estraiProdottoDaLista(array $listaProdotti, $codice) {
   return $prodotti;
 }
 
-function estraiProdottoCodiceDaLista(array $listaProdotti, $codice) {
+/*function estraiProdottoCodiceDaLista(array $listaProdotti, $codice) {
 
   foreach($listaProdotti as $chiave => $elemento) {
     if ($elemento['codice'] == $codice) {
@@ -38,3 +38,4 @@ function estraiProdottoCodiceDaLista(array $listaProdotti, $codice) {
   return null;
 
 }
+*/
