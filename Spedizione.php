@@ -41,12 +41,11 @@ include 'libs/carrello.php';
             </thead>
             <tbody>
               <?php
-
-              foreach($prodottiCarrello as $rigaCarrello) {print_r($rigaCarrello);
+              foreach($prodottiCarrello as $rigaCarrello) {
               ?>
               <tr>
                 <th scope="row">1</th>
-                <td><?=$rigaCarrello[1]['nome']?></td>
+                <td><?=$rigaCarrello['prodotto']['nome']?></td>
                 <td><?=$rigaCarrello['quantita']?></td>
                 <td><?=$rigaCarrello['prodotto']['prezzo']?> &euro;</td>
                 <td><a href="" class="btn btn-link">rimuovi</a></td>

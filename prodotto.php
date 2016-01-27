@@ -9,7 +9,7 @@ $arrayProdotti = inizializzaListaProdotti();
 if (is_null($codiceProdotto)) {
   $prodotti = estraiProdottoDaLista($arrayProdotti, $codiceProdotto); //se la richiesta non  passa alcun parametro allora visualizzo tutti i prodotti
 } else {
-  $prodotti = estraiProdottoDaLista($arrayProdotti, $codiceProdotto);//viene cercato il prodotto codificato nella get
+  $prodotti = estraiProdottoDaLista($arrayProdotti, $codiceProdotto);//viene cercato il prodotto codificato nella $_GET
 }
 
 ?>
@@ -27,7 +27,7 @@ if (is_null($codiceProdotto)) {
   <body>
     <?php include 'include/header.php'; ?>
     <main>
-      <?php foreach($arrayProdotti as $prodotto) {?>
+      <?php foreach($prodotti as $prodotto) {?>
       <div class="row">
           <div class="col-md-12">
             <h1><?=$prodotto['nome']?></h1>
