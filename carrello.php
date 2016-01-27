@@ -42,30 +42,32 @@ include 'libs/carrello.php';
             <tbody>
               <?php
 
-              foreach($prodottiCarrello as $rigaCarrello) {print_r($rigaCarrello);
-              ?>
-              <tr>
-                <th scope="row">1</th>
-                <td><?=$rigaCarrello[1]['nome']?></td>
-                <td><?=$rigaCarrello['quantita']?></td>
-                <td><?=$rigaCarrello['prodotto']['prezzo']?> &euro;</td>
-                <td><a href="" class="btn btn-link">rimuovi</a></td>
-              </tr>
-              <?php }
-              $totaliCarrello = getTotaliCarrello();
-              ?>
-              <tr class="success" style="font-weight: bold">
-                <th scope="row"></th>
-                <td>Totale</td>
-                <td><?=$totaliCarrello['pezzi']?></td>
-                <td><?=$totaliCarrello['totale']?> &euro;</td>
-                <td></td>
-              </tr>
-            </tbody>
-          </table>
-          <?php } else { ?>
-            Nessun prodotto presente nel carrello
-          <?php } ?>
+              foreach($prodottiCarrello as $rigaCarrello) {
+                  //array $prodottiCarrello non associativo, usare indice
+                for ($i=0; $i <count($prodottiCarrello) ; $i++) { print_r($_SESSION['carrello']);   echo "<br";
+                  ?>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td><?=$rigaCarrello['prodotto'][0]['nome']?></td>
+                    <td><?=$rigaCarrello['quantita']?></td>
+                    <td><?=$rigaCarrello['prodotto'][$i]['prezzo']?> &euro;</td>
+                    <td><a href="" class="btn btn-link">rimuovi</a></td>
+                  </tr>
+                  <?php }
+                  $totaliCarrello = getTotaliCarrello();
+                  ?>
+                  <tr class="success" style="font-weight: bold">
+                    <th scope="row"></th>
+                    <td>Totale</td>
+                    <td><?=$totaliCarrello['pezzi']?></td>
+                    <td><?=$totaliCarrello['totale']?> &euro;</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <?php } } else { ?>
+                Nessun prodotto presente nel carrello
+              <?php } ?>
         </div>
       </div>
       <?php if (count($prodottiCarrello) > 0) { ?>

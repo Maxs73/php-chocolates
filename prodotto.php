@@ -27,7 +27,7 @@ if (is_null($codiceProdotto)) {
   <body>
     <?php include 'include/header.php'; ?>
     <main>
-      <?php foreach($prodotti as $prodotto) {?>
+      <?php foreach($prodotti as $prodotto) { ?>
       <div class="row">
           <div class="col-md-12">
             <h1><?=$prodotto['nome']?></h1>
