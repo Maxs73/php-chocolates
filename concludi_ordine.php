@@ -2,7 +2,7 @@
 // inizializziamo le sessioni
 session_start();
 
-include 'libs/libreria.php';
+include 'libs/db.php';
 include 'libs/carrello.php';
 
 // recuperiamo i dati di carrello e utente e li salviamo in un file json

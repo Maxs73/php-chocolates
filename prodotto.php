@@ -1,12 +1,10 @@
 <?php
-include 'libs/libreria.php';
+include 'libs/db.php';
 
 // lettura parametro da URL
 $codiceProdotto = $_GET['codice'];
 
-$arrayProdotti = inizializzaListaProdotti();
-
-$prodotto = estraiProdottoDaLista($arrayProdotti, $codiceProdotto);
+$prodotto = recuperaProdottoDaCodice($codiceProdotto);
 
 ?>
 <!DOCTYPE html>

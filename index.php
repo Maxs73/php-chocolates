@@ -1,5 +1,5 @@
 <?php
-include 'libs/libreria.php';
+include 'libs/db.php';
 
 $arrayProdotti = inizializzaListaProdotti();
 
