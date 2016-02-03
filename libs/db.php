@@ -8,17 +8,23 @@ function creaConnessionePDO() {
 
 function inizializzaListaProdotti() {
     $db = creaConnessionePDO();
-    return $db->query('SELECT * FROM prodotti');
+    return $db->query('SELECT * FROM prodotti');//CHIAMO UN METODO CON DB->METODO()
+}
+
+function inizializzaListaProdottiFiltrati($sqltext) {
+    $db = creaConnessionePDO();
+    $StringSql="SELECT * FROM prodotti where " . $sqltext;
+    return $db->query($StringSql);//CHIAMO UN METODO CON DB->METODO()
 }
 
 function recuperaProdottoDaCodice($codice) {
     $db = creaConnessionePDO();
 
     // prepara la query da eseguire
-    $stmt = $db->prepare('SELECT * FROM prodotti WHERE codice LIKE :codice');
+    $stmt = $db->prepare('SELECT * FROM prodotti WHERE codice LIKE :codice'); //gli passo un parametro codice
 
     // filtra i dati ricevuti e si assicura che non contengano caratteri indesiderati
-    $codice = filter_input(INPUT_GET, 'codice', FILTER_SANITIZE_STRING);
+    $codice = filter_input(INPUT_GET, 'codice', FILTER_SANITIZE_STRING);//ripulisco la varabile $codice
 
     // sanitizza i dati per evitare SQL injections
     $stmt->bindParam(':codice', $codice, PDO::PARAM_STR);
@@ -26,17 +32,17 @@ function recuperaProdottoDaCodice($codice) {
     // esegue la query
     $stmt->execute();
 
-    return $stmt->fetch(PDO::FETCH_ASSOC);
-}
+    return $stmt->fetch(PDO::FETCH_ASSOC);//modo in cui voglio che i dati escano in un array associativo
+  }
 
 function salvaOrdine($prodotti, $utente) {
 
     $db = creaConnessionePDO();
 
-    try {
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    try {//provo ad eseguire una serie di comandi e se uno qualsiasi non funziona esce e fa un rollback (PDO CONTROLLA IL CODICE DELLA QUERY)
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);//gestione degli errori
 
-        $db->beginTransaction();
+        $db->beginTransaction();//monitorizzo le transazioni
 
         // inserimento in tabella clienti
         $stmt = $db->prepare("INSERT INTO clienti (nome, cognome, email, indirizzo, citta, cap, provincia)
@@ -50,9 +56,9 @@ function salvaOrdine($prodotti, $utente) {
         $stmt->bindParam(':cap', $utente['cap'], PDO::PARAM_STR);
         $stmt->bindParam(':provincia', $utente['provincia'], PDO::PARAM_STR);
 
-        $stmt->execute();
+        $stmt->execute();//HO INSERITO I DATI NELLA TABELLA
 
-        $idCliente = $db->lastInsertId();
+        $idCliente = $db->lastInsertId();//MI DA L'ULTIMO ID DEL CLIENTE DELLA QUERY PRECEDENTE
 
         // inserimento in tabella ordini
         $stmt = $db->prepare("INSERT INTO ordini (cliente_id, data, totale, note)
@@ -95,8 +101,8 @@ function salvaOrdine($prodotti, $utente) {
 
         $db->commit();
 
-    } catch (Exception $e) {
-        $db->rollBack();
+    } catch (Exception $e) {//
+        $db->rollBack();//annulla la transazione
         echo "Si è verificato un errore: " . $e->getMessage();
     }
 

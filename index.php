@@ -1,7 +1,7 @@
 <?php
 include 'libs/db.php';
-
-$arrayProdotti = inizializzaListaProdotti();
+$sqltext=" prezzo>500";
+$arrayProdotti = inizializzaListaProdottiFiltrati($sqltext);
 
 ?>
 <!DOCTYPE html>

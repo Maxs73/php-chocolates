@@ -2,8 +2,7 @@
 session_start();
 //unset($_SESSION['carrello']);
 print_r($_SESSION['carrello']);
-if (isset($_SESSION['carrello'])) {
-  $carrello = $_SESSION['carrello'];
+/*  $carrello = $_SESSION['carrello'];
   var_dump(count($carrello));
   foreach ($carrello as $rigacarrello){
     echo $rigacarrello['prodotto']['codice'];
@@ -13,4 +12,5 @@ if (isset($_SESSION['carrello'])) {
 
 } else {
   $carrello = [];
-}
+*/
+//}
