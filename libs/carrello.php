@@ -10,20 +10,26 @@ function aggiungiProdottoCarrello($prodotto, $quantita) {
   // inizializzazione carrello
   if (isset($_SESSION['carrello'])) {
     $carrello = $_SESSION['carrello'];
+    var_dump(count($carrello));
+    for ($i=0; $i < count($carrello) ; $i++) {
+      if ($carrello[$i]['prodotto']['codice']==$prodotto['codice']) {
+        $_SESSION['carrello'][$i]['quantita']+=$quantita;
+        $aggiorna='true';
+      }
 
-    // carrello già inizializzato?
-    // verifica che lo stesso prodotto non sia già presente nel carrello
-    // in caso affermativo, aggiornarne la quantità
+    }
+    if ($aggiorna!='true') {
+      $carrello[] = $rigaCarrello;
+      $_SESSION['carrello'] = $carrello;
+    }
 
   } else {
     $carrello = [];
+    // aggiunta riga a carrello
+    $carrello[] = $rigaCarrello;
+    $_SESSION['carrello'] = $carrello;
   }
 
-  // aggiunta riga a carrello
-  $carrello[] = $rigaCarrello;
-
-  // aggiornamento sessione
-  $_SESSION['carrello'] = $carrello;
 }
 
 function getProdottiCarrello() {
