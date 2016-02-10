@@ -11,6 +11,29 @@ function inizializzaListaProdotti() {
     return $db->query('SELECT * FROM prodotti');//CHIAMO UN METODO CON DB->METODO()
 }
 
+function inizializzaListaOrdini() {
+    $db = creaConnessionePDO();
+    return $db->query('SELECT ordini.id, ordini.data,ordini.totale, clienti.nome,clienti.cognome FROM ordini join clienti on ordini.cliente_id=clienti.id ');//CHIAMO UN METODO CON DB->METODO()
+}
+
+function recuperaOrdineDaCodice($codice) {
+    $db = creaConnessionePDO();
+
+    // prepara la query da eseguire
+    $stmt = $db->prepare('SELECT * FROM ordini_dettagli WHERE ordine_id LIKE :codice'); //gli passo un parametro idordine
+
+    // filtra i dati ricevuti e si assicura che non contengano caratteri indesiderati
+    $codice = filter_input(INPUT_GET, 'codice', FILTER_SANITIZE_NUMBER_INT);//ripulisco la varabile $codice
+
+    // sanitizza i dati per evitare SQL injections
+    $stmt->bindParam(':codice', $codice, PDO::PARAM_INT);
+
+    // esegue la query
+    $stmt->execute();
+
+    return $stmt->fetch(PDO::FETCH_BOTH);//restituisce tutti i record della query
+  }
+
 function inizializzaListaProdottiFiltrati($sqltext) {
     $db = creaConnessionePDO();
     $StringSql="SELECT * FROM prodotti where " . $sqltext;
