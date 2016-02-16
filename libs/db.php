@@ -8,7 +8,9 @@ function creaConnessionePDO() {
 
 function inizializzaListaCategorie() {
     $db = creaConnessionePDO();
-    return $db->query('SELECT * FROM categorie');
+    return $db->query('SELECT categorie.id, categorie.descrizione, Count(prodotti.id_categoria) AS numprodotti
+FROM categorie INNER JOIN prodotti ON categorie.id = prodotti.id_categoria
+GROUP BY categorie.id, categorie.descrizione;');
 }
 
 function inizializzaListaProdotti() {
