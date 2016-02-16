@@ -1,10 +1,9 @@
 <?php
 include 'libs/db.php';
+session_start();
 
-// lettura parametro da URL
-$codiceProdotto = $_GET['codice'];
-
-$prodotto = recuperaProdottoDaCodice($codiceProdotto);
+$arrayProdotti = inizializzaListaProdotti();
+$arrayCategorie = inizializzaListaCategorie();
 
 ?>
 <!DOCTYPE html>
@@ -14,47 +13,44 @@ $prodotto = recuperaProdottoDaCodice($codiceProdotto);
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
   </head>
   <body>
     <?php include 'include/header.php'; ?>
+    <div class="btn-group">
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Categoria <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <?php foreach($arrayCategorie as $categoria) { ?>
+        <li><a href="/prodotto.php?codice=<?= $prodotto['codice'] ?>><?= $categoria['descrizione'] ?></a></li>
+        <?php } ?>
+          <li role="separator" class="divider"></li>
+        <li><a href="#">Separated link</a></li>
+      </ul>
+    </div>
     <main>
-      <div class="row">
-        <div class="col-md-12">
-          <h1><?=$prodotto['nome']?></h1>
+      <div class="container-fluid">
+        <div class="row banner-home">
+          <div class="col-md-3">
+            <img src="https://c2.staticflickr.com/6/5105/5626762538_406270541c_b.jpg">
+          </div>
+          <div class="col-md-9">
+            <h1>Il cioccolato più buono? Lo trovi da noi!</h1>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <img src="<?=$prodotto['url_immagine']?>">
-        </div>
-        <div class="col-md-6">
-          <h2><?=$prodotto['nome']?></h2>
-          <h3><?=$prodotto['descrizione']?></h3>
-          <div>
-            <strong>Ingredienti</strong>: <?=$prodotto['ingredienti']?>
+        <div class="row">
+          <?php foreach($arrayProdotti as $prodotto) { ?>
+          <div class="col-md-4">
+            <div class="panel panel-default">
+              <div class="panel-heading"><a href="/prodotto.php?codice=<?= $prodotto['codice'] ?>"><?= $prodotto['nome'] ?></a></div>
+              <div class="panel-body">
+                <img src="<?= $prodotto['url_immagine'] ?>" />
+              </div>
+            </div>
           </div>
-          <div>
-            <strong>Conservazione</strong>: <?=$prodotto['conservazione']?>
-          </div>
-          <div>
-            <strong>Scadenza</strong>: <?=$prodotto['scadenza']?>
-          </div>
-          <div>
-            <strong>Dimensioni</strong>: <?=$prodotto['dimensioni']?>
-          </div>
-          <div>
-            <strong>Peso netto</strong>: <?=$prodotto['peso_netto']?>
-          </div>
-          <div>
-            <strong>Prezzo</strong>: <?=$prodotto['prezzo']?>
-          </div>
-          <br>
-          <div>
-            <a href="aggiungi_prodotto_carrello.php?codice=<?= $prodotto['codice'] ?>" class="btn btn-success">Acquista</a>
-          </div>
+          <?php } ?>
         </div>
       </div>
     </main>

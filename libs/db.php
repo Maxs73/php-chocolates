@@ -6,6 +6,11 @@ function creaConnessionePDO() {
     return new PDO('mysql:host=localhost;dbname=mvchocolates', 'chocolatier', 'mvlabs');
 }
 
+function inizializzaListaCategorie() {
+    $db = creaConnessionePDO();
+    return $db->query('SELECT * FROM categorie');
+}
+
 function inizializzaListaProdotti() {
     $db = creaConnessionePDO();
     return $db->query('SELECT * FROM prodotti');
