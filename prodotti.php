@@ -2,7 +2,10 @@
 include 'libs/db.php';
 session_start();
 
-$arrayProdotti = inizializzaListaProdotti();
+$filtro=$_SESSION['categoria'];
+$filtro=(int)$filtro;
+var_dump($filtro);
+$arrayProdotti = filtraListaProdotti($filtro);
 $arrayCategorie = inizializzaListaCategorie();
 
 ?>
@@ -24,10 +27,10 @@ $arrayCategorie = inizializzaListaCategorie();
       </button>
       <ul class="dropdown-menu">
         <?php foreach($arrayCategorie as $categoria) { ?>
-        <li><a href="/prodotti.php?codice=<?= $prodotto['codice'] ?>><?= $categoria['descrizione'] ?></a></li>
-        <li role="separator" class="divider"></li>      <?php } ?> 
-        <li><a href="#">Separated link</a></li>
-      </ul>
+        <li><a href="/filtri.php?id=<?= $categoria['id'] ?>"><?= $categoria['descrizione'] ?></a></li>
+        <li role="separator" class="divider"></li><?php } ?>
+        <li><a href="/filtri.php?id=All">All</a></li>
+      </ul>>
     </div>
     <main>
       <div class="container-fluid">

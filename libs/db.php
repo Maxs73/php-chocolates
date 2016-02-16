@@ -16,6 +16,17 @@ function inizializzaListaProdotti() {
     return $db->query('SELECT * FROM prodotti');
 }
 
+function filtraListaProdotti($filtro) {
+    $db = creaConnessionePDO();
+    if ($filtro=='All') {
+      return $db->query('SELECT * FROM prodotti');
+    } else {
+      $filtro=(int)$filtro;
+      return $db->query('SELECT * FROM prodotti where id_categoria=' . $filtro);
+    }
+
+
+}
 function recuperaProdottoDaCodice($codice) {
     $db = creaConnessionePDO();
 
