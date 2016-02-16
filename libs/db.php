@@ -3,7 +3,7 @@
 function creaConnessionePDO() {
     // Nella realtà evitare di connettersi al db con l'utente "root".
     // E' preferibile creare un utente ad-hoc
-    return new PDO('mysql:host=localhost;dbname=mvchocolates', 'root', 'mvlabs');
+    return new PDO('mysql:host=localhost;dbname=mvchocolates', 'chocolatier', 'mvlabs');
 }
 
 function inizializzaListaProdotti() {
