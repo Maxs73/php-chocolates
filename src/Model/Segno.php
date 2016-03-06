@@ -2,7 +2,7 @@
 namespace MvLabs\Chocosite\Model;
 
 //la classe è costruita per determinare se il magazzino deve essere caricato o scaricato
-//inoltre per evitare che il magazzino venga movimentato in modo improprio (vedi setGiacenza in db,php)
+//inoltre per evitare che il magazzino venga movimentato in modo improprio (vedi setGiacenza in db.php)
 class Segno {
     private $segno;
 
