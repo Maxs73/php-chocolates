@@ -3,7 +3,6 @@ namespace MvLabs\Chocosite\Model;
 
 // clausola use per recuperare la classe Prodotto nel namespace corretto
 use MvLabs\Chocosite\Entity\Prodotto;
-
 class Carrello {
     private $righeCarrello = [];
 
